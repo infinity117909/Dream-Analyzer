@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dream Dictionary</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <h1>🌙 Dream Dictionary</h1>
+
+        <form method="post" action="/add-symbol" class="form">
+            <input type="text" name="symbol" placeholder="Symbol (e.g. Water)" required>
+            <textarea name="meaning" placeholder="Your personal meaning..." required></textarea>
+            <button type="submit">Add Symbol</button>
+        </form>
+
+        <h2>Your Symbols</h2>
+
+        <ul class="symbol-list">
+            {% for item in symbols %}
+                <li>
+                    <strong>{{ item.symbol }}:</strong> {{ item.meaning }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <form class="analyze-button" method="post" action="/analyze_dream">
+            <button type="submit">Analyze</button>
+        </form>
+
+        <form class="register-button" method="get" action="/register">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+
+    </div>
+</body>
+</html>
